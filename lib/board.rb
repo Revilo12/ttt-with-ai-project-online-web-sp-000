@@ -1,6 +1,8 @@
 class Board
   attr_accessor :cells
 
+  VALIDMOVES = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
   def initialize
     reset!
   end
@@ -44,6 +46,10 @@ class Board
 
   def update(input, player)
     self.cells[input_to_index(input)] = player.token
+  end
+
+  def availible_moves
+    VALIDMOVES.select {|input| !(board.taken?(input))}
   end
 
 end
